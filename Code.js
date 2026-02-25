@@ -8,4 +8,4 @@ playButton.addEventListener('click', () => {
     //lancer les deux vidéos
     videoTop.play();
     videoBottom.play();
-});kn
+});

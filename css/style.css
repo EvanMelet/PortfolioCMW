@@ -1,3 +1,21 @@
+/* ── Variables : thème clair (défaut) ── */
+:root {
+  --couleur-fond: #ffffff;
+  --couleur-texte: #1a1a1a;
+  --couleur-accent: #3a5bd9;
+  --couleur-fond-carte: #f5f5f5;
+  --espacement: 1.5rem;
+  --police: system-ui, sans-serif;
+}
+
+/* ── Variables : thème sombre ── */
+[data-theme="sombre"] {
+  --couleur-fond: #1a1a1a;
+  --couleur-texte: #f0f0f0;
+  --couleur-accent: #7b9ef0;
+  --couleur-fond-carte: #2a2a2a;
+}
+
 /* Animation de rotation des drapeaux */
 .language {
   width: 50px;

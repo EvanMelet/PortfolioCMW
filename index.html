@@ -11,5 +11,124 @@
   <script src="js/script.js" defer></script>
 </head>
 <body>
-    <script src="Code.js"></script>
+    <body>
+  <!-- Lien d'évitement : permet aux utilisateurs clavier de sauter au contenu -->
+  <a href="#contenu" class="skip-link">Aller au contenu</a>
+
+  <header class="entete">
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#accueil" class="logo">Evan Melet</a>
+
+      <!-- Bouton burger : aria-expanded indique l'état ouvert/fermé -->
+      <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul id="menu" class="menu">
+        <li><a href="#a-propos">À propos</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <!-- Bouton de bascule de thème -->
+          <button class="theme-toggle" aria-label="Changer de thème">🌙</button>
+        </li>
+        <!-- Drapeaux de changement de langue -->
+        <li class="langue-toggle">
+          <img src="img/LangEnglish.jpg" class="language" alt="English" data-language="0">
+          <img src="img/LangFrench.jpg" class="language" alt="Français" data-language="1">
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main id="contenu">
+    <!-- HERO -->
+    <section id="accueil" class="hero">
+      <!-- id="titre_page" : ciblé par le JS pour le changement de langue -->
+      <h1 id="titre_page">Evan Melet</h1>
+      <!-- id="presentation" : accroche traduite par le JS -->
+      <p id="presentation" class="accroche">Je conçois et pilote des projets web de A à Z.</p>
+      <a href="#projets" class="bouton">Voir mes projets</a>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="a-propos">
+      <h2>À propos</h2>
+      <!-- id="texte_presentation" : paragraphe traduit par le JS -->
+      <p id="texte_presentation">Formé à Paris Panthéon Sorbonne ainsi qu'à l'université Gustave Eiffel, je m'intéresse à la fois aux aspects techniques et à la gestion de projets numériques. J'ai notamment coordonné le documentaire intéractif Recueil, tourné en Corée du Sud, ainsi que que plusieurs projets de site web pour des clients variés. Ces projets m'ont permis de développer une approche polyvalente, de la conception à la mise en ligne.</p>
+      <ul class="competences">
+        <li>Gestion de projet</li>
+        <li>HTML / CSS</li>
+        <li>JavaScript</li>
+        <li>Pack Office</li>
+        <li>Suite Adobe</li>
+        <li>CMS WordPress</li>
+        <li>Figma</li>
+        <li>Jira</li>
+      </ul>
+    </section>
+    <!-- PROJETS -->
+    <section id="projets">
+      <h2>Projets</h2>
+
+      <!-- Boutons de filtre (data-filtre relié au data-categorie des cartes) -->
+      <div class="filtres" role="group" aria-label="Filtrer les projets">
+        <button class="filtre actif" data-filtre="tous">Tous</button>
+        <button class="filtre" data-filtre="web">Sites web</button>
+        <button class="filtre" data-filtre="video">Vidéo</button>
+      </div>
+
+      <div class="grille-projets">
+        <!-- Carte vidéo : le documentaire -->
+        <article class="projet" data-categorie="video">
+          <h3>Recueil</h3>
+          <div class="video-conteneur">
+            <iframe
+                 src="https://player.vimeo.com/video/1203201422"
+                title="Documentaire : Recueil"
+                loading="lazy"
+                allowfullscreen>
+             </iframe>
+          </div>
+          <p>Recueil est un documentaire consacré au temple bouddhiste Silsangsa et à la communauté rurale Indramang de la commune de Sannae, au pied du mont Jirisan, en Corée du Sud.</p>
+        </article>
+
+        <!-- Carte projet web -->
+        <article class="projet" data-categorie="web">
+          <img src="img/Guycantin.webp" alt="Aperçu du site guycantin.fr" loading="lazy" width="400" height="250">
+          <h3>GuyCantin</h3>
+          <p>Création d'un site web pour un tanneur d'équitation.</p>
+          <a href="https://guycantin.fr" target="_blank" rel="noopener">Voir le site</a>
+        </article>
+        <article class="projet" data-categorie="web">
+          <img src="img/maison32.webp" alt="Aperçu du site Maison32.com" loading="lazy" width="400" height="250">
+          <h3>Maison32</h3>
+          <p>Création d'un site web pour de la location d'un appartement parisien.</p>
+          <a href="https://maison32.com" target="_blank" rel="noopener">Voir le site</a>
+        </article>
+        <article class="projet" data-categorie="web">
+          <img src="img/dicowork.webp" alt="Aperçu du site dicowork.evanm.fr" loading="lazy" width="400" height="250">
+          <h3>Dico-Labor</h3>
+          <p>Création d'un site web pour un dictionnaire critique de l'histoire du travail</p>
+          <a href="https://dicowork.evanm.fr" target="_blank" rel="noopener">Voir le site</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Une question, un projet ? Écris-moi.</p>
+      <ul class="liens-contact">
+        <li><a href="mailto:evanmelet@gmail.com">evanmelet@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/evan-melet-ba9918197/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/evanm" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <p>© <span id="annee"></span> Evan Melet</p>
+    <a href="mentions-legales.html">Mentions légales</a>
+  </footer>
+</body>
 </html>

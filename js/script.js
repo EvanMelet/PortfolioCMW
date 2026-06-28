@@ -42,3 +42,6 @@ function changeLanguage(event) {
     document.querySelectorAll(".punct").forEach(function(punct){punct.innerHTML = "";})
   }
 }
+
+/* Année dynamique dans le footer */
+document.getElementById("annee").textContent = new Date().getFullYear();

@@ -52,3 +52,14 @@ changerLangue(1);
 
 //Année dynamique dans le footer
 document.getElementById("annee").textContent = new Date().getFullYear();
+
+// Menu burger https://claude.ai/share/a9cb5c3b-87aa-4157-8c7b-84566d7eaae1
+var burger = document.querySelector('.burger');
+var menu = document.querySelector('.menu');
+
+burger.addEventListener('click', function () {
+  var estOuvert = menu.classList.toggle('ouvert');
+  burger.setAttribute('aria-expanded', estOuvert);
+  burger.setAttribute('aria-label', estOuvert ? 'Fermer le menu' : 'Ouvrir le menu');
+});
+

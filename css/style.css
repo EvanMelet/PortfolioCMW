@@ -34,6 +34,7 @@
 }
 
 body {
+  transition: background-color 0.3s ease, color 0.3s ease;
   font-family: var(--police);
   background-color: var(--couleur-fond);
   color: var(--couleur-texte);
@@ -85,6 +86,30 @@ img {
 .menu a:hover {
   color: var(--couleur-accent);
 }
+
+/* Bouton thème */
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 1px solid var(--couleur-texte);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--couleur-texte);
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover { transform: scale(1.1); }
+.theme-toggle svg { width: 22px; height: 22px; }
+
+/* Afficher lune en clair, soleil en sombre */
+.theme-toggle .sun { display: none; }
+.theme-toggle .moon { display: block; }
+[data-theme="sombre"] .theme-toggle .sun { display: block; }
+[data-theme="sombre"] .theme-toggle .moon { display: none; }
+
 
 /* Bouton burger (caché sur desktop) */
 .burger {

@@ -63,3 +63,16 @@ burger.addEventListener('click', function () {
   burger.setAttribute('aria-label', estOuvert ? 'Fermer le menu' : 'Ouvrir le menu');
 });
 
+//Bascule thème clair / sombre 
+var boutonTheme = document.querySelector('.theme-toggle');
+var html = document.documentElement;
+
+// Thème de départ selon la préférence système
+var prefereSombre = window.matchMedia('(prefers-color-scheme: dark)').matches;
+html.setAttribute('data-theme', prefereSombre ? 'sombre' : 'clair');
+
+boutonTheme.addEventListener('click', function () {
+  var actuel = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', actuel === 'sombre' ? 'clair' : 'sombre');
+});
+

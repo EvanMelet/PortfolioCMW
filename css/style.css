@@ -129,6 +129,92 @@ img {
   background-color: var(--couleur-texte);
 }
 
+/* Drapeaux */
+.langue-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.language {
+  width: 30px;
+  height: auto;
+  cursor: pointer;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+}
+
+.accroche {
+  font-size: 1.2rem;
+  max-width: 600px;
+  opacity: 0.8;
+}
+
+.bouton {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background-color: var(--couleur-accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.bouton:hover {
+  opacity: 0.85;
+}
+
+/* Sections génériques */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem var(--espacement);
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Compétences */
+.competences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.competences li {
+  background-color: var(--couleur-fond-carte);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+/* Filtres projets */
+.filtres {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filtre {
+  padding: 0.4rem 1.2rem;
+  border: 1px solid var(--couleur-accent);
+  background: none;
+  color: var(--couleur-accent);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.filtre.actif {
+  background-color: var(--couleur-accent);
+  color: #fff;
+}
+
 /* Grille de projets */
 .grille-projets {
   display: grid;
@@ -136,6 +222,48 @@ img {
   gap: 2rem;
 }
 
+.projet {
+  background-color: var(--couleur-fond-carte);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.projet h3 {
+  font-size: 1.1rem;
+}
+
+.projet img {
+  border-radius: 4px;
+}
+
+/* Conteneur vidéo */
+.video-conteneur {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-conteneur iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Contact */
+.liens-contact {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+}
 /* Pied de page */
 .pied {
   text-align: center;

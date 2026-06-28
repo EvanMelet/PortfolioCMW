@@ -29,7 +29,7 @@ var languages = {
   "mentions":         ["Legal notice",        "Mentions légales"]
 };
 
-//Fonction de traduction
+//Fonction de traduction, utlise data-i18n pour identifier les éléments à traduire et changer leur contenu en fonction de la langue sélectionnée.
 function changerLangue(languageId) {
   document.documentElement.lang = languageId == 0 ? "en" : "fr";
   document.querySelectorAll("[data-i18n]").forEach(function (el) {

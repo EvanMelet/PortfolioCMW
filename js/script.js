@@ -18,13 +18,14 @@ var languages = {
   "filtre-web":       ["Websites",            "Sites web"],
   "filtre-video":     ["Video",               "Vidéo"],
   "desc-recueil":     [
-    "Recueil is a documentary about the Buddhist temple Silsangsa and the rural community of Indramang in the township of Sannae, at the foot of Mount Jirisan, in South Korea.",
-    "Recueil est un documentaire consacré au temple bouddhiste Silsangsa et à la communauté rurale Indramang de la commune de Sannae, au pied du mont Jirisan, en Corée du Sud."
+    "Recueil is a interactive documentary about the Buddhist temple Silsangsa and the rural community of Indramang in the township of Sannae, at the foot of Mount Jirisan, in South Korea.",
+    "Recueil est un documentaire interactif consacré au temple bouddhiste Silsangsa et à la communauté rurale Indramang de la commune de Sannae, au pied du mont Jirisan, en Corée du Sud."
   ],
   "desc-guycantin":   ["Website creation for an equestrian leather craftsman.", "Création d'un site web pour un tanneur d'équitation."],
   "desc-maison32":    ["Website creation for a Parisian apartment rental.",     "Création d'un site web pour la location d'un appartement parisien."],
   "desc-dicowork":    ["Website creation for a critical dictionary of labour history.", "Création d'un site web pour un dictionnaire critique de l'histoire du travail."],
   "lien-site":        ["Visit the site",      "Voir le site"],
+  "lien-docu":        ["Watch the documentary", "Voir le documentaire"],
   "intro-contact":    ["A question or a project? Write to me.", "Une question, un projet ? Écris-moi."],
   "mentions":         ["Legal notice",        "Mentions légales"]
 };
@@ -74,5 +75,23 @@ html.setAttribute('data-theme', prefereSombre ? 'sombre' : 'clair');
 boutonTheme.addEventListener('click', function () {
   var actuel = html.getAttribute('data-theme');
   html.setAttribute('data-theme', actuel === 'sombre' ? 'clair' : 'sombre');
+});
+/* Filtres de projets  */
+var boutonsFiltres = document.querySelectorAll(".filtre");
+
+boutonsFiltres.forEach(function (bouton) {
+  bouton.addEventListener("click", function () {
+    boutonsFiltres.forEach(function (b) { b.classList.remove("actif"); });
+    bouton.classList.add("actif");
+
+    var filtre = bouton.dataset.filtre;
+    document.querySelectorAll(".projet").forEach(function (projet) {
+      if (filtre === "tous" || projet.dataset.categorie === filtre) {
+        projet.style.display = "";
+      } else {
+        projet.style.display = "none";
+      }
+    });
+  });
 });
 

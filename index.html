@@ -13,21 +13,27 @@
 </head>
 <body>
   <a href="#contenu" class="skip-link" data-i18n="skip-link">Aller au contenu</a>
-
   <header class="entete">
     <nav class="nav" aria-label="Navigation principale">
-      <a href="#accueil" class="logo">Evan Melet</a>
-       <!-- bouton burger : https://claude.ai/share/a9cb5c3b-87aa-4157-8c7b-84566d7eaae1 -->
-      <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
-        <span></span><span></span><span></span>
-      </button>
-
-      <ul id="menu" class="menu">
-        <li><a href="#a-propos" data-i18n="nav-apropos">À propos</a></li>
-        <li><a href="#projets" data-i18n="nav-projets">Projets</a></li>
-        <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
-        <li>
-        <button class="theme-toggle" aria-label="Changer de thème">
+        <!-- 1. Gauche : nom du site -->
+        <a href="#accueil" class="logo">Evan Melet</a>
+        <!-- bouton burger : https://claude.ai/share/a9cb5c3b-87aa-4157-8c7b-84566d7eaae1 -->
+        <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
+            <span></span><span></span><span></span>
+        </button>
+        <!-- 2. Centre : liens de navigation -->
+        <ul id="menu" class="menu">
+            <li><a href="#a-propos" data-i18n="nav-apropos">À propos</a></li>
+            <li><a href="#projets" data-i18n="nav-projets">Projets</a></li>
+            <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
+        </ul>
+        <!-- 3. Droite : actions (thème + langues) -->
+        <div class="actions">
+            <span class="langue-toggle">
+                <img src="img/LangFrench.svg" class="language" alt="Français" data-language="1">
+                <img src="img/LangEnglish.svg" class="language" alt="English" data-language="0">
+            </span>
+            <button class="theme-toggle" aria-label="Changer de thème">
             <svg class="moon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
             </svg>
@@ -35,15 +41,10 @@
                 <circle cx="12" cy="12" r="4"/>
                 <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
             </svg>
-        </button>
-
-        </li>
-        <li class="langue-toggle">
-             <img src="img/LangFrench.jpg" class="language" alt="Français" data-language="1">
-            <img src="img/LangEnglish.jpg" class="language" alt="English" data-language="0">
-        </li>
-      </ul>
+            </button>
+        </div>
     </nav>
+
   </header>
 
   <main id="contenu">

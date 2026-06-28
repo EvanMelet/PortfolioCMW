@@ -21,27 +21,30 @@
         <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
             <span></span><span></span><span></span>
         </button>
-        <!-- 2. Centre : liens de navigation -->
-        <ul id="menu" class="menu">
-            <li><a href="#a-propos" data-i18n="nav-apropos">À propos</a></li>
-            <li><a href="#projets" data-i18n="nav-projets">Projets</a></li>
-            <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
-        </ul>
-        <!-- 3. Droite : actions (thème + langues) -->
-        <div class="actions">
-            <span class="langue-toggle">
-                <img src="img/LangFrench.svg" class="language" alt="Français" data-language="1">
-                <img src="img/LangEnglish.svg" class="language" alt="English" data-language="0">
-            </span>
-            <button class="theme-toggle" aria-label="Changer de thème">
-            <svg class="moon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
-            <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <circle cx="12" cy="12" r="4"/>
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-            </svg>
-            </button>
+        <div id="menu" class="nav-collapse">
+            <!-- 2. Centre : liens de navigation -->
+            <ul class="menu-liens">
+                <li><a href="#a-propos" data-i18n="nav-apropos">À propos</a></li>
+                <li><a href="#parcours" data-i18n="nav-parcours">Parcours</a></li>
+                <li><a href="#projets" data-i18n="nav-projets">Projets</a></li>
+                <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
+            </ul>
+            <!-- 3. Droite : actions (thème + langues) -->
+            <div class="actions">
+                <span class="langue-toggle">
+                    <img src="img/LangFrench.svg" class="language" alt="Français" data-language="1">
+                    <img src="img/LangEnglish.svg" class="language" alt="English" data-language="0">
+                </span>
+                <button class="theme-toggle" aria-label="Changer de thème">
+                <svg class="moon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+                <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                </svg>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -50,17 +53,23 @@
   <main id="contenu">
     <!-- HERO -->
     <section id="accueil" class="hero">
-      <h1 id="titre_page" data-i18n="titre_page">Evan Melet</h1>
-      <p id="presentation" class="accroche" data-i18n="presentation">Je conçois et pilote des projets web de A à Z.</p>
-      <a href="#projets" class="bouton" data-i18n="btn-projets">Voir mes projets</a>
-    </section>
+        <!-- Vidéo de fond : muette, en boucle, sans contrôle -->
+        <video class="hero-video" autoplay muted loop playsinline poster="img/hero-poster.webp">
+            <source src="video/fond-hero.webm" type="video/webm">
+        </video>
 
+        <div class="hero-contenu">
+            <h1 id="titre_page" data-i18n="titre_page">Evan Melet</h1>
+            <p id="presentation" class="accroche" data-i18n="presentation">Je conçois et pilote des projets web de A à Z.</p>
+            <a href="#projets" class="bouton" data-i18n="btn-projets">Voir mes projets</a>
+        </div>
+    </section>
     <!-- À PROPOS -->
     <section id="a-propos">
       <h2 data-i18n="titre-apropos">À propos</h2>
       <p id="texte_presentation" data-i18n="texte_presentation">Formé à Paris Panthéon Sorbonne ainsi qu'à l'université Gustave Eiffel, je m'intéresse à la fois aux aspects techniques et à la gestion de projets numériques. J'ai notamment coordonné le documentaire Recueil, tourné en Corée du Sud, ainsi que plusieurs projets de sites web pour des clients variés. Ces projets m'ont permis de développer une approche polyvalente, de la conception à la mise en ligne.</p>
       <ul class="competences">
-        <li>Gestion de projet</li>
+        <li data-i18n="comp-gestion">Gestion de projet</li>
         <li>HTML / CSS</li>
         <li>JavaScript</li>
         <li>Pack Office</li>
@@ -70,6 +79,42 @@
         <li>Jira</li>
       </ul>
     </section>
+
+    <!-- PARCOURS -->
+    <section id="parcours">
+    <h2 data-i18n="titre-parcours">Parcours</h2>
+    <div class="timeline">
+
+        <article class="etape">
+        <span class="etape-date" data-i18n="date-master">Depuis septembre 2024</span>
+        <h3>Master Cultures et Métiers du Web</h3>
+        <p class="etape-lieu">Université Gustave Eiffel</p>
+        <p data-i18n="desc-master">Gestion de projet web (méthode Agile, Jira), développement front-end (HTML, CSS, JavaScript) et initiation à la création multimédia.</p>
+        </article>
+
+        <article class="etape">
+        <span class="etape-date" data-i18n="date-stage">Mai – Août 2026</span>
+        <h3>Stage — Gestion de projet web</h3>
+        <p class="etape-lieu">Association française pour l'histoire des mondes du travail</p>
+        <p data-i18n="desc-stage">Déploiement d'un site web multilingue, rédaction de contenus et référencement (projet Dico-Labor).</p>
+        </article>
+
+        <article class="etape">
+        <span class="etape-date" data-i18n="date-freelance">Depuis juin 2023</span>
+        <h3>Développeur WordPress freelance</h3>
+        <p class="etape-lieu">Indépendant</p>
+        <p data-i18n="desc-freelance">Création de sites sous WordPress, intégration de maquettes responsives, relation client et optimisation SEO.</p>
+        </article>
+
+        <article class="etape">
+        <span class="etape-date" data-i18n="date-licence">2019 – 2023</span>
+        <h3>Licence d'Économie, option Gestion</h3>
+        <p class="etape-lieu">Université Paris-I Panthéon-Sorbonne</p>
+        <p data-i18n="desc-licence">Fondamentaux en économie, gestion et méthodes quantitatives.</p>
+        </article>
+    </div>
+    </section>
+
 
     <!-- PROJETS -->
     <section id="projets">

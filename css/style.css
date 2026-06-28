@@ -38,6 +38,7 @@ html {
 }
 
 body {
+  margin: 0;   
   transition: background-color 0.3s ease, color 0.3s ease;
   font-family: var(--police);
   background-color: var(--couleur-fond);
@@ -60,6 +61,7 @@ img {
 }
 
 .nav {
+  position: relative;       /* ancre le menu déroulant mobile */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -70,8 +72,8 @@ img {
 }
 
 .actions {
-  justify-self: end;          /* collé à droite dans la grille de la nav */
-  display: flex;              /* aligne thème + drapeaux horizontalement */
+  justify-self: end;          
+  display: flex;              
   align-items: center;
   gap: 1rem;
 }
@@ -83,14 +85,21 @@ img {
   color: var(--couleur-texte);
 }
 
-.menu {
+/* Conteneur repliable : transparent sur desktop, devient le menu déroulant sur mobile */
+.nav-collapse {
+  display: contents;
+}
+
+.menu-liens {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.menu a {
+.menu-liens a {
   color: var(--couleur-texte);
   text-decoration: none;
   opacity: 0.7;
@@ -98,7 +107,7 @@ img {
   transition: opacity 0.2s ease, border-color 0.2s ease;
 }
 
-.menu a:hover {
+.menu-liens a:hover {
   opacity: 1;
   border-bottom-color: var(--couleur-accent);
 }
@@ -159,8 +168,47 @@ img {
   cursor: pointer;
 }
 .hero {
+  position: relative;
+  overflow: hidden;
+  max-width: none;       
+  min-height: 100vh;      
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;      
   text-align: center;
-  padding: 5rem var(--espacement);
+  padding: 6rem var(--espacement);
+}
+
+/* La vidéo couvre tout le hero, derrière le contenu */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Voile sombre pour garder le texte lisible */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: -1;
+}
+
+/* Le contenu passe au-dessus, en blanc */
+.hero-contenu {
+  position: relative;
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    display: none;
+  }
 }
 
 .hero h1 {
@@ -193,6 +241,7 @@ section {
   max-width: 1100px;
   margin: 0 auto;
   padding: 5rem var(--espacement);
+  scroll-margin-top: 80px;   /* évite que le titre passe sous la nav sticky */
 }
 
 section h2 {
@@ -214,6 +263,49 @@ section h2 {
   padding: 0.4rem 1rem;
   border-radius: 999px;
   font-size: 0.9rem;
+}
+
+/* Parcours (timeline) */
+.timeline {
+  border-left: 2px solid var(--couleur-fond-carte);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-left: 2rem;
+}
+
+.etape {
+  position: relative;
+}
+
+/* Le point sur la ligne */
+.etape::before {
+  content: "";
+  position: absolute;
+  left: calc(-2rem - 6px);
+  top: 0.4rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--couleur-accent);
+  border: 2px solid var(--couleur-fond);
+}
+
+.etape-date {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--couleur-accent);
+}
+
+.etape h3 {
+  font-size: 1.15rem;
+  margin-top: 0.25rem;
+}
+
+.etape-lieu {
+  opacity: 0.7;
+  font-style: italic;
+  margin-bottom: 0.5rem;
 }
 
 /* Filtres projets */
@@ -279,25 +371,6 @@ section h2 {
 .projet-texte a:hover {
   opacity: 0.85;
   transform: translateY(-2px);
-}
-
-.projet-texte2 {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* Le lien reste compact, ne s'étire pas sur toute la largeur */
-.projet-texte2 a {
-  align-self: flex-end;
-  display: inline-block;
-  padding: 0.6rem 1.4rem;
-  background-color: var(--couleur-accent);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .projet-texte2 a:hover {
@@ -384,18 +457,36 @@ section h2 {
 }
 
 
-/* Responsive mobile */
+/* Responsive : tablette */
+@media (max-width: 900px) {
+  section {
+    padding: 4rem var(--espacement);
+  }
+
+  .hero {
+    padding: 4rem var(--espacement);
+  }
+}
+
+/* Responsive : mobile */
 @media (max-width: 768px) {
+
+  /* Burger visible, poussé à droite */
+  .nav {
+    justify-content: flex-start;
+  }
 
   .burger {
     display: flex;
+    margin-left: auto;
   }
 
-  .menu {
+  /* Le conteneur devient le menu déroulant (liens + actions) */
+  .nav-collapse {
     display: none;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 1.5rem;
     position: absolute;
     top: 100%;
     left: 0;
@@ -405,17 +496,58 @@ section h2 {
     border-bottom: 1px solid var(--couleur-fond-carte);
   }
 
-  .menu.ouvert {
+  .nav-collapse.ouvert {
     display: flex;
   }
 
+  /* Liens empilés verticalement dans le menu */
+  .menu-liens {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  /* Projets en une seule colonne */
   .projet {
     grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  /* Moins d'espace vertical sur mobile */
+  section {
+    padding: 3.5rem var(--espacement);
+  }
+
+  .hero {
+    padding: 3.5rem var(--espacement);
+  }
+
+  section h2 {
+    font-size: 1.7rem;
   }
 
   .pied {
     flex-direction: column;
     gap: 0.5rem;
     align-items: center;
+  }
+}
+
+/* Responsive : petit mobile */
+@media (max-width: 480px) {
+  .actions {
+    gap: 0.5rem;
+  }
+
+  .accroche {
+    font-size: 1.05rem;
+  }
+
+  .projet h3 {
+    font-size: 1.25rem;
+  }
+
+  .etape h3 {
+    font-size: 1.05rem;
   }
 }

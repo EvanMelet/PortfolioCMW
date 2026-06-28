@@ -10,6 +10,7 @@ var languages = {
   "nav-apropos":      ["About",               "À propos"],
   "nav-projets":      ["Projects",            "Projets"],
   "nav-contact":      ["Contact",             "Contact"],
+  "nav-parcours":    ["Background",  "Parcours"],
   "btn-projets":      ["See my projects",     "Voir mes projets"],
   "titre-apropos":    ["About",               "À propos"],
   "titre-projets":    ["Projects",            "Projets"],
@@ -17,6 +18,8 @@ var languages = {
   "filtre-tous":      ["All",                 "Tous"],
   "filtre-web":       ["Websites",            "Sites web"],
   "filtre-video":     ["Video",               "Vidéo"],
+  "comp-gestion":    ["Project management",  "Gestion de projet"],
+
   "desc-recueil":     [
     "Recueil is a interactive documentary about the Buddhist temple Silsangsa and the rural community of Indramang in the township of Sannae, at the foot of Mount Jirisan, in South Korea.",
     "Recueil est un documentaire interactif consacré au temple bouddhiste Silsangsa et à la communauté rurale Indramang de la commune de Sannae, au pied du mont Jirisan, en Corée du Sud."
@@ -27,7 +30,16 @@ var languages = {
   "lien-site":        ["Visit the site",      "Voir le site"],
   "lien-docu":        ["Watch the documentary", "Voir le documentaire"],
   "intro-contact":    ["A question or a project? Write to me.", "Une question, un projet ? Écris-moi."],
-  "mentions":         ["Legal notice",        "Mentions légales"]
+  "mentions":         ["Legal notice",        "Mentions légales"],
+  "titre-parcours":  ["Background",            "Parcours"],
+  "date-master":     ["Since September 2024",  "Depuis septembre 2024"],
+  "desc-master":     ["Web project management (Agile, Jira), front-end development (HTML, CSS, JavaScript) and an introduction to multimedia creation.", "Gestion de projet web (méthode Agile, Jira), développement front-end (HTML, CSS, JavaScript) et initiation à la création multimédia."],
+  "date-stage":      ["May – August 2026",     "Mai – Août 2026"],
+  "desc-stage":      ["Deployment of a multilingual website, content writing and SEO (Dico-Labor project).", "Déploiement d'un site web multilingue, rédaction de contenus et référencement (projet Dico-Labor)."],
+  "date-freelance":  ["Since June 2023",       "Depuis juin 2023"],
+  "desc-freelance":  ["WordPress website creation, responsive integration, client relations and SEO optimisation.", "Création de sites sous WordPress, intégration de maquettes responsives, relation client et optimisation SEO."],
+  "date-licence":    ["2019 – 2023",           "2019 – 2023"],
+  "desc-licence":    ["Fundamentals in economics, management and quantitative methods.", "Fondamentaux en économie, gestion et méthodes quantitatives."],
 };
 
 //Fonction de traduction, utlise data-i18n pour identifier les éléments à traduire et changer leur contenu en fonction de la langue sélectionnée.
@@ -56,7 +68,7 @@ document.getElementById("annee").textContent = new Date().getFullYear();
 
 // Menu burger https://claude.ai/share/a9cb5c3b-87aa-4157-8c7b-84566d7eaae1
 var burger = document.querySelector('.burger');
-var menu = document.querySelector('.menu');
+var menu = document.getElementById('menu');
 
 burger.addEventListener('click', function () {
   var estOuvert = menu.classList.toggle('ouvert');

@@ -1,4 +1,4 @@
-/* ── Variables : thème clair (défaut) ── */
+/* Variables : thème clair (défaut) */
 :root {
   --couleur-fond: #ffffff;
   --couleur-texte: #1a1a1a;
@@ -8,7 +8,8 @@
   --police: system-ui, sans-serif;
 }
 
-/* ── Variables : thème sombre ── */
+/* Variables : thème sombre */
+
 [data-theme="sombre"] {
   --couleur-fond: #1a1a1a;
   --couleur-texte: #f0f0f0;
@@ -16,11 +17,18 @@
   --couleur-fond-carte: #2a2a2a;
 }
 
-/* Animation de rotation des drapeaux */
-.language {
-  width: 50px;
-  height: auto;
-  cursor: pointer;
-  /* conserver un rendu 3D pendant la rotation */
-  transform-style: preserve-3d;
+/* Lien d'évitement (accessibilité clavier) */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--couleur-accent);
+  color : #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 4px 4px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
 }

@@ -44,19 +44,27 @@ var languages = {
 
 //Fonction de traduction, utlise data-i18n pour identifier les éléments à traduire et changer leur contenu en fonction de la langue sélectionnée.
 function changerLangue(languageId) {
-  document.documentElement.lang = languageId == 0 ? "en" : "fr";
+  languageId = Number(languageId);
+  document.documentElement.lang = languageId === 0 ? "en" : "fr";
   document.querySelectorAll("[data-i18n]").forEach(function (el) {
     var cle = el.dataset.i18n;
     if (languages[cle]) {
       el.innerHTML = languages[cle][languageId];
     }
   });
+  // Mettre à jour l'état du sélecteur de langue (classe active + aria)
+  document.querySelectorAll(".lang-btn").forEach(function (btn) {
+    var actif = (btn.dataset.lang === "fr" && languageId === 1) ||
+                (btn.dataset.lang === "en" && languageId === 0);
+    btn.classList.toggle("active", actif);
+    btn.setAttribute("aria-pressed", actif);
+  });
 }
 
-// Clic sur un drapeau
-document.querySelectorAll(".language").forEach(function (img) {
-  img.addEventListener("click", function (e) {
-    changerLangue(e.target.dataset.language);
+// Clic sur un bouton de langue
+document.querySelectorAll(".lang-btn").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    changerLangue(btn.dataset.lang === "fr" ? 1 : 0);
   });
 });
 
@@ -88,14 +96,13 @@ boutonTheme.addEventListener('click', function () {
   var actuel = html.getAttribute('data-theme');
   html.setAttribute('data-theme', actuel === 'sombre' ? 'clair' : 'sombre');
 });
-/* Filtres de projets  */
+//Filtres de projets
 var boutonsFiltres = document.querySelectorAll(".filtre");
 
 boutonsFiltres.forEach(function (bouton) {
   bouton.addEventListener("click", function () {
     boutonsFiltres.forEach(function (b) { b.classList.remove("actif"); });
     bouton.classList.add("actif");
-
     var filtre = bouton.dataset.filtre;
     document.querySelectorAll(".projet").forEach(function (projet) {
       if (filtre === "tous" || projet.dataset.categorie === filtre) {
@@ -105,5 +112,26 @@ boutonsFiltres.forEach(function (bouton) {
       }
     });
   });
+});
+
+//surligne le lien du menu correspondant à la section visible
+var liensMenu = document.querySelectorAll(".menu-liens a");
+
+var observateur = new IntersectionObserver(function (entrees) {
+  entrees.forEach(function (entree) {
+    // Quand une section croise le centre de l'écran, on active son lien
+    if (entree.isIntersecting) {
+      var id = entree.target.id;
+      liensMenu.forEach(function (lien) {
+        lien.classList.toggle("active", lien.getAttribute("href") === "#" + id);
+      });
+    }
+  });
+}, { rootMargin: "-50% 0px -50% 0px" });
+
+// On observe chaque section ciblée par un lien du menu
+liensMenu.forEach(function (lien) {
+  var section = document.querySelector(lien.getAttribute("href"));
+  if (section) observateur.observe(section);
 });
 
